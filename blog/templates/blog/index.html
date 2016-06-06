@@ -40,7 +40,13 @@ body {
 
 {% block content %}
 
-Post list will be placed here.
+<ul>
+  {% for post in post_list %}
+    <li>
+     {{ post.title }}
+    </li>
+  {% endfor %}
+</ul>
 
 {% endblock content %}
 
