@@ -1,0 +1,11 @@
+{% extends 'blog/index.html' %}
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+<hr>
+	{{ post.content }}
+<hr>
+	<img src="{{ post.photo.url }}">
+<hr>
+
+{% endblock content %}
