@@ -7,7 +7,7 @@
 <hr>
 	<img src="{{ post.photo.url }}">
 <hr>
-	<a href = "{% url 'blog.views.comment_new' post.pk %}" class = 'btn btn-primary btn-block'>
+	<a href = "{% url 'blog:comment_new' post.pk %}" class = 'btn btn-primary btn-block'>
 		새 댓글쓰기
 	</a>
 	<ol>
