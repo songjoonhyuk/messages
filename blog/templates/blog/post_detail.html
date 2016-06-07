@@ -3,9 +3,21 @@
 
 <h1>{{ post.title }}</h1>
 <hr>
-	{{ post.content }}
+	{{ post.content|linebreaks }}
 <hr>
 	<img src="{{ post.photo.url }}">
 <hr>
+	<a href = "{% url 'blog.views.comment_new' post.pk %}" class = 'btn btn-primary btn-block'>
+		새 댓글쓰기
+	</a>
+	<ol>
+		{% for comment in post.comment_set.all %}
+			<li>
+				{{ comment.content }}
+			</li>
+		{% empty %}
+			<h5>등록된 댓글이 없습니다.</h5>
+		{% endfor %}
+	</ol>
 
 {% endblock content %}

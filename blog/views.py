@@ -20,3 +20,16 @@ def post_new(request):
 	else:
 		form = PostForm()
 	return render(request, 'blog/post_new.html', {'form':form,})
+
+def comment_new(request, post_pk):
+	if request.method == 'POST':
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.post = Post.objects.get(pk=post_pk)
+			comment.save()
+			return redirect('blog.views.post_detail', post_pk)
+	else:
+		form = CommentForm()
+	return render(request, 'blog/comment_new.html', {'form':form})
+
