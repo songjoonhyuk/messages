@@ -11,7 +11,7 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title
 
-class Comment(model.Model):
+class Comment(models.Model):
 	post = models.ForeignKey(Post)
 	content = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -19,4 +19,3 @@ class Comment(model.Model):
 
 	def __str__(self):
 		return self.title
-
