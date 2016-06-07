@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
+from blog.forms import PostForm
 # Create your views here.
 
 def index(request):
@@ -9,3 +10,13 @@ def index(request):
 def post_detail(request, pk):
 	post = Post.objects.get(pk=pk)
 	return render(request, 'blog/post_detail.html', {'post':post, })
+
+def post_new(request):
+	if request.method == 'POST':
+		form = PostForm(request.POST, request.FILES)
+		if form.is_valid():
+			post = form.save()
+			return redirect('blog:post_detail', post.pk)
+	else:
+		form = PostForm()
+	return render(request, 'blog/post_new.html', {'form':form,})
