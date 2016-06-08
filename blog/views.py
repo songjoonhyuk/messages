@@ -28,7 +28,7 @@ def comment_new(request, post_pk):
 			comment = form.save(commit=False)
 			comment.post = Post.objects.get(pk=post_pk)
 			comment.save()
-			return redirect('blog.views.post_detail', post_pk)
+			return redirect('blog:post_detail', post_pk)
 	else:
 		form = CommentForm()
 	return render(request, 'blog/comment_new.html', {'form':form})
