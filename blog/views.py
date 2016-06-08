@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Post
 from blog.forms import PostForm, CommentForm
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -28,6 +29,7 @@ def comment_new(request, post_pk):
 			comment = form.save(commit=False)
 			comment.post = Post.objects.get(pk=post_pk)
 			comment.save()
+			messages.success(request, '새로운 댓글이 등록되었습니다.')
 			return redirect('blog:post_detail', post_pk)
 	else:
 		form = CommentForm()
