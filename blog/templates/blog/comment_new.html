@@ -1,0 +1,16 @@
+{% extends 'blog/index.html' %}
+{% block content %}
+
+{{ comment.post_pk }}
+<form action='' method ='post'>
+
+	{% csrf_token %}
+
+	<table>
+		{{ form.as_table }}
+	</table>
+
+	<input type='submit' class='save btn btn-default'/>
+
+</form>
+{% endblock content %}
